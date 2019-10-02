@@ -9,7 +9,7 @@ namespace task3_half_cut_bisection
             Bisection equations = new Bisection();
 
             //function
-            Func<double,double> f = x => Math.Pow(Math.E,-2*x)+Math.Pow(2*x,2)-2;
+            Func<double,double> f = x => Math.Pow(Math.E,-2*x)+2*Math.Pow(x,2)-2;
             
             double? root = equations.ExecuteBisectionMethod(f,0,1,0.001);
 
