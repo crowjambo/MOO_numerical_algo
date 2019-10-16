@@ -12,7 +12,8 @@ namespace TASK5_Crossing_method
             //derivative
             Func<double,double> g = x => 3*Math.Pow(x,2)-1;
 
-            double? root = equation.ExecuteNewCrossing();
+
+            double? root = equation.ExecuteNewCrossing(f,g,4,3,0.0001);
 
             Console.WriteLine($"Root is {root}");
         }

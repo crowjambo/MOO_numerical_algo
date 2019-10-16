@@ -1,5 +1,6 @@
 using System;
 
+//draw tangent between intervals
 public class NewtonMethod{
 
     public double? ExecuteNewtonRaphson(

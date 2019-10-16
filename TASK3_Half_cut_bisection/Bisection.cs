@@ -18,12 +18,12 @@ public class Bisection
         int iterator = 1;
 
         bool Converged = false;
-        //midpoint
+        //midpoint aka root
         double x2;
 
         //main logic
         do{
-
+            
             x2 = (x0 +x1)/2;
             if(f(x0) * f(x2) < 0){
                 //if true, reached negative
