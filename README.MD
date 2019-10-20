@@ -1,2 +1,2 @@
 ### Methods of Optimization
-## PI18E - Evaldas Paulauskas, 2019
+#### PI18E - Evaldas Paulauskas, 2019
