@@ -7,10 +7,12 @@ namespace GaussElimination
     class Program
     {
 
+        //helper method
         public static bool IsValidSolution(double reuslt){
             return !(double.IsNaN(reuslt) || double.IsInfinity(reuslt));
         }
 
+        //substitute row values into other rows to get final answers
         public static double[] BackSubstition(double[][] rowsMatrix){
             double val = 0;
             int length = rowsMatrix[0].Length;
@@ -24,7 +26,7 @@ namespace GaussElimination
                 }
                 result[i] = val / rowsMatrix[i][i];
 
-                //if divide by 0
+                //if divide by 0 etc
                 if(!IsValidSolution(result[i])){
                     return null;
                 }
@@ -33,6 +35,7 @@ namespace GaussElimination
             return result;
         }
 
+        //swap rows
         static public bool SwapRows(double[][] rowsMatrix, int row, int column){
             bool isSwapped = false;
             for (int z = rowsMatrix.Length-1; z > row; z--)
@@ -48,6 +51,8 @@ namespace GaussElimination
             return isSwapped;
         }
 
+
+        //do row operations
         static public double[] GetReducedForm(double[][] rowsMatrix){
             int length = rowsMatrix[0].Length;
 
@@ -72,7 +77,8 @@ namespace GaussElimination
                     //update current matrix after calc
                     rowsMatrix[j] = d;
                 }
-                //more calc, but starting from different rows
+
+                //more calc, subtracting rows one from another
                 for (int y = i+1; y < rowsMatrix.Length; y++)
                 {
                     double[] f = new double[length];
@@ -87,9 +93,11 @@ namespace GaussElimination
 
                 }
             }
+            //sub values to get final answers
             return BackSubstition(rowsMatrix);
         }
 
+        //convert string input into matrix and continue solving
         static public double[] SolveLinearEquations(string[] coefficients){
             double[][] rowsMatrix = new double[coefficients.Length][];
             for (int i = 0; i < rowsMatrix.Length; i++)
@@ -100,6 +108,7 @@ namespace GaussElimination
             return GetReducedForm(rowsMatrix);
         }
 
+        //init
         static public double[] GaussEliminationFunc(string[] coefficients){
             string[] input = coefficients;
             double[] result = SolveLinearEquations(input);
