@@ -23,7 +23,7 @@ namespace TASK4_Newton_method
             Func<double,double> g = x => 2*x;
 
             //double? root = equation.ExecuteNewtonRaphson(f,g,3,0.00001);
-            double? root = equation.ExecuteNewtonRaphson(f,g,24,0.05);
+            double? root = equation.ExecuteNewtonRaphson(f,g,20,0.05);
 
             watch.Stop();
             Console.WriteLine($"Root is {root}");
