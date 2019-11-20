@@ -1,6 +1,6 @@
 using System;
 
-//draw tangent between intervals
+//draws tangent between intervals
 public class NewtonMethod{
 
     public double? ExecuteNewtonRaphson(
@@ -8,7 +8,6 @@ public class NewtonMethod{
         Func<double,double> derivative,
         double initialGuess,
         double error
-        //int iterations
     ){
         //variables
         Func<double,double> f = function;
@@ -16,7 +15,6 @@ public class NewtonMethod{
 
         double x0 = initialGuess;
         double err = error;
-        //int n = iterations;
 
         bool Converged = false;
         int i = 0;
@@ -29,9 +27,6 @@ public class NewtonMethod{
             x1 = x0 - f(x0) / g(x0);
             x0 = x1;
             i++;
-            //if(i > n){
-                //return null;
-           // }
             Converged = Math.Abs(f(x1)) <= err;
 
             Console.Write($"iteration {i}\n x1: {x1}\n {x0}\n\n -----");
