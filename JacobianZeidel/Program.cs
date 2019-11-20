@@ -33,11 +33,24 @@ namespace IterativeSolutions
             System.Console.WriteLine("JACOBIAN");
             while(!found){
 
-                calcResult = inputMatrix[0][0] * x2[i] + inputMatrix[0][1] * x3[i] + inputMatrix[0][2];
+                //problem with writing the proper equation due to - + signs!!! fucks shit up
+                //if [0][1] = - sign in front, it needs to be multiplied by -1 to maintain negative and not turn into +
+                //same for [2][1] or [1][1](if it were a negative number, needs to be multiplied by -1)
+                if(inputMatrix[0][1] < 0){
+                    inputMatrix[0][1] *= -1;
+                }
+                if(inputMatrix[1][1] < 0){
+                    inputMatrix[1][1] *= -1;
+                }
+                if(inputMatrix[2][1] < 0){
+                    inputMatrix[2][1] *= -1;
+                }
+
+                calcResult = inputMatrix[0][0] * x2[i] - (inputMatrix[0][1] * x3[i]) + inputMatrix[0][2];
                 x1.Add(calcResult);
                 calcResult1 = inputMatrix[1][0] * x1[i] - inputMatrix[1][1] *x3[i] + inputMatrix[1][2];
                 x2.Add(calcResult1);
-                calcResult2 = inputMatrix[2][0] * x1[i] + inputMatrix[2][1] * x2[i] + inputMatrix[2][2];
+                calcResult2 = inputMatrix[2][0] * x1[i] - (inputMatrix[2][1] * x2[i]) + inputMatrix[2][2];
                 x3.Add(calcResult2); 
                 //calc with current values
                 // tempx1 = x1;
@@ -138,7 +151,7 @@ namespace IterativeSolutions
             //loop for result Jacobian
             System.Console.WriteLine("Final answers Jacobian: \n ----------");
             foreach(var x in result){
-                System.Console.WriteLine(x);
+                System.Console.WriteLine(Math.Round(x));
             }
             System.Console.WriteLine("\n" + watch.Elapsed + "\n ---------");
 
