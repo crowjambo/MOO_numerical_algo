@@ -97,22 +97,16 @@ namespace GaussElimination
             return BackSubstition(rowsMatrix);
         }
 
-        //convert string input into matrix and continue solving
-        static public double[] SolveLinearEquations(string[] coefficients){
+        //init + convert string input into matrix and continue solving
+        static public double[] GaussEliminationFunc(string[] coefficients){
             double[][] rowsMatrix = new double[coefficients.Length][];
             for (int i = 0; i < rowsMatrix.Length; i++)
             {
+                //creates new arrays(in memory) and appends to array of arrays
                 rowsMatrix[i] = (double[])Array.ConvertAll(coefficients[i].Split(" "),double.Parse);
             }
 
             return GetReducedForm(rowsMatrix);
-        }
-
-        //init
-        static public double[] GaussEliminationFunc(string[] coefficients){
-            string[] input = coefficients;
-            double[] result = SolveLinearEquations(input);
-            return result;
         }
 
 
