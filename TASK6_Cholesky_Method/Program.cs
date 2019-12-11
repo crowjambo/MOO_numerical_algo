@@ -23,7 +23,7 @@ namespace TASK6_Cholesky_Method
             for (int i = 0; i < 3; i++)  
             {  
                 for (int j = 0; j < 3; j++) 
-                    Console.Write(lower[i, j] + "\t"); 
+                    Console.Write($"{lower[i, j]:0.0} + \t"); 
                 Console.WriteLine(); 
             } 
         }
@@ -85,6 +85,10 @@ namespace TASK6_Cholesky_Method
         */
         /* Theory
                 The Cholesky decomposition or Cholesky factorization is a decomposition of a Hermitian, positive-definite matrix into the product of a lower triangular matrix and its conjugate transpose. The Cholesky decomposition is roughly twice as efficient as the LU decomposition for solving systems of linear equations.
+
+
+                //WORKS ONLY FOR HERMITIAN MATRIXES (that is equal to its own conjugate transpose) A = A(transpose)
+
         */
         //Find A
         static double[,] Cholesky_Decomposition(double[,] matrix){ 
@@ -149,14 +153,14 @@ namespace TASK6_Cholesky_Method
                 0
             };
 
-            //Every symmetric, positive definite matrix A can be decomposed into a product of a unique lower triangular matrix L and its transpose
             double[,] lowerTmatrix = Cholesky_Decomposition(matrix);
             double[,] lowerTransposed = TransposeMatrix(lowerTmatrix);
 
-            // System.Console.WriteLine("Normal");
-            // MatrixDisplaySingle(lowerTmatrix);
-            // System.Console.WriteLine("Transposed");
-            // MatrixDisplaySingle(lowerTransposed);
+            //display
+            System.Console.WriteLine("Normal");
+            MatrixDisplaySingle(lowerTmatrix);
+            System.Console.WriteLine("Transposed");
+            MatrixDisplaySingle(lowerTransposed);
 
 
             System.Console.WriteLine();
